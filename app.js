@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const button = document.getElementById("searchBtn");
+    const result = document.getElementById("result");
+    const hero = document.getElementById('heroNames');
     const httpReq = new XMLHttpRequest();
 
     button.addEventListener('click', function() {
@@ -13,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (httpReq.readyState === XMLHttpRequest.DONE) {
             if (httpReq.status === 200) {
                 let response = httpReq.responseText;
-                alert(response);
+                result.innerHTML = "RESULT \n" + response;
             } else {
                 alert('There was a problem with the request');
             }
