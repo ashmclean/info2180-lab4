@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: #23be92;
+    background-color: #2338be;
     text-align: center;
     width: 100%;
     padding: 20px;
@@ -34,7 +34,8 @@ header {
 }
 
 #container #searchBtn {
-    background-color: #5A67D8;
+    background-color: red;
+    font-weight: bold;
     color: white;
     height: 50px;
     width: 100px;
@@ -44,7 +45,32 @@ header {
 
 #result {
     margin: 50px;
-    margin-left: 500px;
     width: 100%;
+    padding: 0%;
+    line-height: normal;
     
+}
+
+#unfound {
+    color: red;
+    font-weight: bold;
+}
+
+#resultHead {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#alias {
+    text-transform: uppercase;
+    color: grey;
+    font-size: xx-large;
+    padding: 0;
+}
+
+#name {
+    text-transform: uppercase;
+    color: grey;
+    font-size: x-large;
+    padding: 0;
 }

@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const httpReq = new XMLHttpRequest();
 
     button.addEventListener('click', function() {
-        let url = "http://localhost/info2180-lab4/superheroes.php";
+        let name = hero.value;
+        name = name.trim();
+        let url = "http://localhost/info2180-lab4/superheroes.php?query="+name;
         httpReq.onreadystatechange = printHeroList;
         httpReq.open('GET', url);
         httpReq.send();
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (httpReq.readyState === XMLHttpRequest.DONE) {
             if (httpReq.status === 200) {
                 let response = httpReq.responseText;
-                result.innerHTML = "RESULT \n" + response;
+                result.innerHTML =  response;
             } else {
                 alert('There was a problem with the request');
             }

@@ -67,10 +67,44 @@ $superheroes = [
   ], 
 ];
 
-?>
+if(isset($_GET['query'])){
+    $hero = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_STRING);
+    $hero = strtolower($hero);
+}
+else{
+    $hero = '';
+}
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+if(!empty($hero)){
+    $found= null;
+    foreach($superheroes as $superhero) {
+        if((strtolower($superhero['alias']) == strtolower($hero)) || strtolower($superhero['name']) == strtolower($hero)) {
+            $found= $superhero;
+            break;
+        }
+    }
+        if($found){
+            echo "<h2> RESULT </h2>";
+            echo "<hr>";
+            echo "<h3 id='alias'>{$found['alias']}</h3>";
+            echo"<h4 id='name'>A.K.A. {$found['name']}</h4>";
+            echo "<p>{$found['biography']}</p>";
+        }
+        else{
+            echo "<h2 id='resultHead'> RESULT </h2>";
+            echo "<hr>";
+            echo "<p id='unfound'>SUPERHERO NOT FOUND</p>";
+        }
+    }
+else{
+            echo "<h2> RESULT </h2>";
+            echo"<hr>";
+            echo "<ul>";
+            foreach ($superheroes as $superhero) {
+                echo "<li>{$superhero['alias']}</li>";
+
+            }
+            echo "</ul>";
+    }
+
+?>
